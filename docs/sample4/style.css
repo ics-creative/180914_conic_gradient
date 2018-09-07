@@ -19,6 +19,13 @@
     #00dbd9 100%
   );
 
+  -webkit-mask-image: radial-gradient(
+    transparent 0%,
+    transparent 50px,
+    white 50px,
+    white
+  );
+
   mask-image: radial-gradient(
     transparent 0%,
     transparent 50px,
