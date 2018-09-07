@@ -1,0 +1,11 @@
+body {
+  background-image: repeating-conic-gradient(
+    white 0,
+    white 25%,
+    #cbcbcb 25%,
+    #cbcbcb 50%
+  );
+
+  background-size: 20px 20px;
+  background-position: center center;
+}

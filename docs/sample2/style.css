@@ -1,0 +1,13 @@
+.box {
+  width: 100%;
+  height: 100%;
+
+  background-image: conic-gradient(
+    hsl(0, 100%, 50%) 0,
+    hsl(90, 100%, 50%) 90deg,
+    hsl(180, 100%, 50%) 180deg,
+    hsl(270, 100%, 50%) 270deg,
+    hsl(360, 100%, 50%) 360deg
+  );
+
+}

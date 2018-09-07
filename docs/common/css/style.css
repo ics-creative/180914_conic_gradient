@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  margin: 0;
+  font-family: "Open Sans", "Hiragino Sans", "ヒラギノ角ゴシック",
+    "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  color: #333333;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #f7f7f7;
+}
+
+h1 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: normal;
+}
+
+h1,
+p,
+label,
+button,
+textarea,
+ul,
+li,
+hr {
+  margin-bottom: 20px;
+}
+
+p {
+  line-height: 36px;
+}

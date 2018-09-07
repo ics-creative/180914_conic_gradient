@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "parcel docs/**/index.html",
+    "start": "parcel {docs/**/index.html,docs/sample7/**/index.html}",
     "compile-sass": "parcel build docs/line_effect/style.scss -d docs/line_effect --no-minify"
   },
   "devDependencies": {

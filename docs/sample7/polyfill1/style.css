@@ -1,0 +1,10 @@
+.box {
+  width: 100%;
+  height: 540px;
+  padding: 0;
+}
+
+.box3 {
+  /* hslは使えないので、16進数に変更した */
+  background-image: conic-gradient(#00fff2, #0022ff);
+}

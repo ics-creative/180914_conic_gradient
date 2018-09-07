@@ -1,0 +1,9 @@
+.box {
+  width: 100%;
+  height: 100%;
+  background-image: repeating-conic-gradient(
+    hsl(177, 100%, 50%) 0,
+    hsl(232, 100%, 50%) 10%,
+    hsl(177, 100%, 50%) 20%
+  );
+}

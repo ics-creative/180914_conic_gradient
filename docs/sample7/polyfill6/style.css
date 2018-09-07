@@ -1,0 +1,77 @@
+:root {
+  --background-color: #ffee33;
+  --circle-width: 100vw;
+}
+
+html,
+body {
+  background-color: var(--background-color);
+}
+body {
+  overflow: hidden;
+}
+
+@media (orientation: portrait) {
+  :root {
+    --circle-width: 100vh;
+  }
+}
+
+.line-container {
+  position: absolute;
+
+  --border-color: #ffab3c;
+  --half-circle-width: calc(var(--circle-width) / 2);
+
+  width: var(--circle-width);
+  height: var(--circle-width);
+  left: calc(50% - var(--half-circle-width));
+  top: calc(50% - var(--half-circle-width));
+
+  /* ランダムな太さの先を重ねる */
+  background-image: repeating-conic-gradient(
+      transparent 0,
+      transparent 13deg,
+      #ffab3c 13deg,
+      #ffab3c 16deg
+    ),
+    repeating-conic-gradient(
+      transparent 0,
+      transparent 20deg,
+      #ffab3c 20deg,
+      #ffab3c 23deg
+    ),
+    repeating-conic-gradient(
+      transparent 0,
+      transparent 5deg,
+      #ffab3c 5deg,
+      #ffab3c 8deg
+    ),
+    repeating-conic-gradient(
+      transparent 0,
+      transparent 40deg,
+      #ffab3c 40deg,
+      #ffab3c 44deg
+    ),
+    repeating-conic-gradient(
+      transparent 0,
+      transparent 10deg,
+      #ffab3c 10deg,
+      #ffab3c 13deg
+    );
+
+  /* 中心をくり抜く */
+  -webkit-mask-image: radial-gradient(
+    transparent 0%,
+    transparent 12%,
+    white 30%,
+    white
+  );
+
+  mask-image: radial-gradient(
+    transparent 0%,
+    transparent 12%,
+    white 30%,
+    white
+  );
+}

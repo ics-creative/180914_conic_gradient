@@ -1,0 +1,151 @@
+:root {
+  --background-color: #ffee33;
+  // 集中線のサイズ。landscapeのときは200vw（100vwだと見切れるため）
+  --circle-width: 200vw;
+}
+
+html,
+body {
+  background-color: var(--background-color);
+}
+
+body {
+  overflow: hidden;
+}
+
+@media (orientation: portrait) {
+  :root {
+    // 集中線のサイズ。portraitのときは200vh（100vhだと見切れるため）
+    --circle-width: 200vh;
+  }
+}
+
+.line-container {
+  position: absolute;
+
+  --half-circle-width: calc(var(--circle-width) / 2);
+
+  width: var(--circle-width);
+  height: var(--circle-width);
+  left: calc(50% - var(--half-circle-width));
+  top: calc(50% - var(--half-circle-width));
+
+  // ランダムな太さの先を重ねる
+  background-image: repeating-conic-gradient(
+      transparent 0,
+      transparent 13deg,
+      #ffab3c 13deg,
+      #ffab3c 16deg
+    ),
+    repeating-conic-gradient(
+      transparent 0,
+      transparent 20deg,
+      #ffab3c 20deg,
+      #ffab3c 23deg
+    ),
+    repeating-conic-gradient(
+      transparent 0,
+      transparent 5deg,
+      #ffab3c 5deg,
+      #ffab3c 8deg
+    ),
+    repeating-conic-gradient(
+      transparent 0,
+      transparent 40deg,
+      #ffab3c 40deg,
+      #ffab3c 44deg
+    ),
+    repeating-conic-gradient(
+      transparent 0,
+      transparent 10deg,
+      #ffab3c 10deg,
+      #ffab3c 13deg
+    );
+
+  // 中心をくり抜く
+  mask-image: radial-gradient(
+    transparent 0%,
+    transparent 12%,
+    white 30%,
+    white
+  );
+
+  animation: backgroundAnimation 20s infinite linear;
+
+  @keyframes backgroundAnimation {
+    from {
+      transform: rotate(0);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+// ランダムな位置に星を配置する
+
+.star {
+  margin-left: 5px;
+  margin-right: 5px;
+
+  background-color: white;
+  clip-path: polygon(
+    50% 0%,
+    66% 28%,
+    100% 33.75%,
+    76% 58.6%,
+    81% 92.8%,
+    50% 80%,
+    19% 92.8%,
+    25% 58.6%,
+    0% 33.75%,
+    34% 28%
+  );
+
+  position: absolute;
+  opacity: 0;
+
+  @for $i from 1 through 50 {
+    &:nth-child(#{$i}) {
+      $starSize: random(18);
+      width: $starSize + px;
+      height: $starSize + px;
+      top: calc(50% - #{$starSize / 2}px);
+      left: calc(50% - #{$starSize / 2}px);
+
+      transform: translate(-40 + random(80) + vw, -40 + random(80) + vw)
+        rotate(random(360) + deg);
+      animation-delay: random(4000) + ms;
+    }
+  }
+
+  animation: star-keyframes 4000ms ease-in infinite;
+
+  @keyframes star-keyframes {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+
+    20% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+.item {
+  $itemWidth: 100;
+  position: absolute;
+  line-height: $itemWidth + px;
+  font-size: $itemWidth + px;
+  top: calc(50% - #{$itemWidth / 2}px);
+  left: calc(50% - #{$itemWidth / 2}px);
+  pointer-events: none;
+}
