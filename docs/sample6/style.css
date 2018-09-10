@@ -3,18 +3,18 @@
   --circle-width: 100vw;
 }
 
+@media (orientation: portrait) {
+  :root {
+    --circle-width: 100vh;
+  }
+}
+
 html,
 body {
   background-color: var(--background-color);
 }
 body {
   overflow: hidden;
-}
-
-@media (orientation: portrait) {
-  :root {
-    --circle-width: 100vh;
-  }
 }
 
 .line-container {
