@@ -72,6 +72,24 @@ body {
   );
 }
 
+/* mask-imageに対応している場合のスタイル */
+@supports (mask-image: radial-gradient(white, white)) or
+  (-webkit-mask-image: radial-gradient(white, white)) {
+  .line-container {
+    /* 中心をくり抜く */
+    mask-image: radial-gradient(
+      transparent 0%,
+      transparent 12%,
+      white 30%,
+      white
+    );
+  }
+
+  .line-container:before {
+    display: none;
+  }
+}
+
 /* 縦持ちのときの対応 */
 @media (orientation: portrait) {
   .line-container {
@@ -146,4 +164,5 @@ body {
   top: calc(50% - #{$itemWidth / 2}px);
   left: calc(50% - #{$itemWidth / 2}px);
   pointer-events: none;
+  color: #ffab3c;
 }

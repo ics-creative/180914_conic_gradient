@@ -55,13 +55,6 @@ body {
     );
 
   /* 中心をくり抜く */
-  -webkit-mask-image: radial-gradient(
-    transparent 0%,
-    transparent 12%,
-    white 30%,
-    white
-  );
-
   mask-image: radial-gradient(
     transparent 0%,
     transparent 12%,

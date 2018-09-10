@@ -59,7 +59,25 @@ body {
     #ffee33 12%,
     transparent 30%,
     transparent
-  )
+  );
+}
+
+/* mask-imageに対応している場合のスタイル */
+@supports (mask-image: radial-gradient(white, white)) or
+  (-webkit-mask-image: radial-gradient(white, white)) {
+  .line-container {
+    /* 中心をくり抜く */
+    mask-image: radial-gradient(
+      transparent 0%,
+      transparent 12%,
+      white 30%,
+      white
+    );
+  }
+
+  .line-container:before {
+    display: none;
+  }
 }
 
 /* 縦持ちのときの対応 */
@@ -71,4 +89,3 @@ body {
     top: calc(50% - 50vh);
   }
 }
-
