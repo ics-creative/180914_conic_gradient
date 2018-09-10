@@ -4,6 +4,13 @@
   --circle-width: 200vw;
 }
 
+@media (orientation: portrait) {
+  :root {
+    // 集中線のサイズ。portraitのときは200vh（100vhだと見切れるため）
+    --circle-width: 200vh;
+  }
+}
+
 html,
 body {
   background-color: var(--background-color);
@@ -11,13 +18,6 @@ body {
 
 body {
   overflow: hidden;
-}
-
-@media (orientation: portrait) {
-  :root {
-    // 集中線のサイズ。portraitのときは200vh（100vhだと見切れるため）
-    --circle-width: 200vh;
-  }
 }
 
 .line-container {

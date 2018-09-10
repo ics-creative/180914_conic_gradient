@@ -1,32 +1,22 @@
-:root {
-  --background-color: #ffee33;
-  --circle-width: 100vw;
-}
+/* IE11対応のため、CSS変数は使っていません */
 
 html,
 body {
-  background-color: var(--background-color);
-}
-body {
-  overflow: hidden;
+  background-color: #ffee33;
 }
 
-@media (orientation: portrait) {
-  :root {
-    --circle-width: 100vh;
-  }
+body {
+  overflow: hidden;
 }
 
 .line-container {
   position: absolute;
 
-  --border-color: #ffab3c;
-  --half-circle-width: calc(var(--circle-width) / 2);
+  width: 100vw;
+  height: 100vw;
 
-  width: var(--circle-width);
-  height: var(--circle-width);
-  left: calc(50% - var(--half-circle-width));
-  top: calc(50% - var(--half-circle-width));
+  left: calc(50% - 50vw);
+  top: calc(50% - 50vw);
 
   /* ランダムな太さの先を重ねる */
   background-image: repeating-conic-gradient(
@@ -74,4 +64,13 @@ body {
     white 30%,
     white
   );
+}
+
+@media (orientation: portrait) {
+  .line-container {
+    width: 100vh;
+    height: 100vh;
+    left: calc(50% - 50vh);
+    top: calc(50% - 50vh);
+  }
 }
