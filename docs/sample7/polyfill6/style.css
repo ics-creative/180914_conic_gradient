@@ -62,7 +62,7 @@ body {
   )
 }
 
-/* 縦持ち・横持ちの対応 */
+/* 縦持ちのときの対応 */
 @media (orientation: portrait) {
   .line-container {
     width: 100vh;

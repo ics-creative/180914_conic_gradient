@@ -1,34 +1,16 @@
-:root {
-  --background-color: #ffee33;
-  // 集中線のサイズ。landscapeのときは200vw（100vwだと見切れるため）
-  --circle-width: 200vw;
-  --half-circle-width: calc(var(--circle-width) / 2);
-}
-
-@media (orientation: portrait) {
-  :root {
-    // 集中線のサイズ。portraitのときは200vh（100vhだと見切れるため）
-    --circle-width: 200vh;
-  }
-}
-
-html,
 body {
-  background-color: var(--background-color);
-}
-
-body {
+  background-color: #ffee33;
   overflow: hidden;
 }
 
 .line-container {
   position: absolute;
 
+  width: 200vw;
+  height: 200vw;
 
-  width: var(--circle-width);
-  height: var(--circle-width);
-  left: calc(50% - var(--half-circle-width));
-  top: calc(50% - var(--half-circle-width));
+  left: calc(50% - 100vw);
+  top: calc(50% - 100vw);
 
   // ランダムな太さの先を重ねる
   background-image: repeating-conic-gradient(
@@ -83,11 +65,21 @@ body {
   height: 100%;
 
   background-image: radial-gradient(
-      #ffee33 0%,
-      #ffee33 12%,
-      transparent 30%,
-      transparent
-  )
+    #ffee33 0%,
+    #ffee33 12%,
+    transparent 30%,
+    transparent
+  );
+}
+
+/* 縦持ちのときの対応 */
+@media (orientation: portrait) {
+  .line-container {
+    width: 200vh;
+    height: 200vh;
+    left: calc(50% - 100vh);
+    top: calc(50% - 100vh);
+  }
 }
 
 // ランダムな位置に星を配置する
