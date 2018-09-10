@@ -8,10 +8,8 @@
     "compile-sass": "parcel build docs/line_effect/style.scss -d docs/line_effect --no-minify"
   },
   "devDependencies": {
-    "autoprefixer": "^9.1.5",
     "node-sass": "^4.9.3",
     "parcel": "^1.9.7",
-    "postcss-modules": "^1.3.2",
     "npm-check-updates": "^2.14.2",
     "prettier": "^1.14.2"
   }
