@@ -2,6 +2,7 @@
   --background-color: #ffee33;
   // 集中線のサイズ。landscapeのときは200vw（100vwだと見切れるため）
   --circle-width: 200vw;
+  --half-circle-width: calc(var(--circle-width) / 2);
 }
 
 @media (orientation: portrait) {
@@ -23,7 +24,6 @@ body {
 .line-container {
   position: absolute;
 
-  --half-circle-width: calc(var(--circle-width) / 2);
 
   width: var(--circle-width);
   height: var(--circle-width);
@@ -62,14 +62,6 @@ body {
       #ffab3c 13deg
     );
 
-  // 中心をくり抜く
-  mask-image: radial-gradient(
-    transparent 0%,
-    transparent 12%,
-    white 30%,
-    white
-  );
-
   animation: backgroundAnimation 20s infinite linear;
 
   @keyframes backgroundAnimation {
@@ -83,8 +75,22 @@ body {
   }
 }
 
-// ランダムな位置に星を配置する
+/* 中心のぼかした円 */
+.line-container:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
 
+  background-image: radial-gradient(
+      #ffee33 0%,
+      #ffee33 12%,
+      transparent 30%,
+      transparent
+  )
+}
+
+// ランダムな位置に星を配置する
 .star {
   margin-left: 5px;
   margin-right: 5px;

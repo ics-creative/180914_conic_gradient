@@ -1,11 +1,7 @@
 /* IE11対応のため、CSS変数は使っていません */
 
-html,
 body {
   background-color: #ffee33;
-}
-
-body {
   overflow: hidden;
 }
 
@@ -49,23 +45,24 @@ body {
       #ffab3c 10deg,
       #ffab3c 13deg
     );
-
-  /* 中心をくり抜く */
-  -webkit-mask-image: radial-gradient(
-    transparent 0%,
-    transparent 12%,
-    white 30%,
-    white
-  );
-
-  mask-image: radial-gradient(
-    transparent 0%,
-    transparent 12%,
-    white 30%,
-    white
-  );
 }
 
+/* 中心のぼかした円 */
+.line-container:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background-image: radial-gradient(
+    #ffee33 0%,
+    #ffee33 12%,
+    transparent 30%,
+    transparent
+  )
+}
+
+/* 縦持ち・横持ちの対応 */
 @media (orientation: portrait) {
   .line-container {
     width: 100vh;
@@ -74,3 +71,4 @@ body {
     top: calc(50% - 50vh);
   }
 }
+
