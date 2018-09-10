@@ -9,7 +9,6 @@
   border-radius: 50%;
   width: 300px;
   height: 300px;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
   background-image: conic-gradient(
     #f11a50 0,
     #f11a50 65%,
