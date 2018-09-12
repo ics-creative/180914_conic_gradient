@@ -82,10 +82,11 @@ body {
 
 /* mask-imageに対応している場合のスタイル */
 @supports (
-    (-webkit-mask-image: radial-gradient(white, white)) or
-      (mask-image: radial-gradient(white, white))
+    (-webkit-mask-image: radial-gradient(white, white))
+    or
+    (mask-image: radial-gradient(white, white))
   )
-  or (-webkit-mask-image: radial-gradient(white, white)) {
+  and (not (-ms-ime-align: auto)) {
   .line-container {
     /* 中心をくり抜く */
     -webkit-mask-image: radial-gradient(

@@ -72,9 +72,17 @@ body {
   );
 }
 
-/* mask-imageに対応している場合のスタイル */
-@supports (mask-image: radial-gradient(white, white)) or
-  (-webkit-mask-image: radial-gradient(white, white)) {
+/*
+mask-imageに対応し、Edgeではない場合のスタイル
+Edgeのハックについては次を参照
+2018年版 Edge のみ適用する CSS ハック (@supports) の書き方 - Corredor
+http://neos21.hatenablog.com/entry/2018/03/12/080000
+ */
+@supports (
+    (mask-image: radial-gradient(white, white))
+    and
+    (not (-ms-ime-align: auto))
+) {
   .line-container {
     /* 中心をくり抜く */
     mask-image: radial-gradient(
