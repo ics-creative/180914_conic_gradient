@@ -157,12 +157,15 @@ body {
 }
 
 .item {
-  $itemWidth: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  line-height: $itemWidth + px;
-  font-size: $itemWidth + px;
-  top: calc(50% - #{$itemWidth / 2}px);
-  left: calc(50% - #{$itemWidth / 2}px);
-  pointer-events: none;
+  top: calc(50% - 100px);
+  left: calc(50% - 100px);
+  width: 200px;
+  height: 200px;
+  font-size: 100px;
   color: #ffab3c;
+  pointer-events: none;
 }

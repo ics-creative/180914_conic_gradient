@@ -681,11 +681,15 @@ body {
 }
 
 .item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  line-height: 100px;
+  top: calc(50% - 100px);
+  left: calc(50% - 100px);
+  width: 200px;
+  height: 200px;
   font-size: 100px;
-  top: calc(50% - 50px);
-  left: calc(50% - 50px);
-  pointer-events: none;
   color: #ffab3c;
+  pointer-events: none;
 }
