@@ -25,7 +25,7 @@ body {
   left: calc(50% - var(--half-circle-width));
   top: calc(50% - var(--half-circle-width));
 
-  /* ランダムな太さの先を重ねる */
+  /* Layer lines with varied widths. */
   background-image: repeating-conic-gradient(
       transparent 0,
       transparent 13deg,
@@ -51,7 +51,7 @@ body {
       var(--border-color) 3deg
     );
 
-  /* 中心をくり抜く */
+  /* Cut out the center. */
   -webkit-mask-image: radial-gradient(
     transparent 0%,
     transparent 12%,

@@ -16,9 +16,7 @@ ul {
 
 body {
   margin: 0;
-  font-family: "Open Sans", "Hiragino Sans", "ヒラギノ角ゴシック",
-    "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Helvetica Neue",
-    Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 22px;
   color: #333333;
   box-sizing: border-box;

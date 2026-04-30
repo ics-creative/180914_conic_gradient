@@ -1,4 +1,4 @@
 
-# Chromeの最新機能が楽しいぞ\! CSSで円グラフや集中線が描けるconic\-gradient入門
+# Introduction to conic-gradient for pie charts and radial line effects
 
-ICS MEDIA「[Chromeの最新機能が楽しいぞ\! CSSで円グラフや集中線が描けるconic\-gradient入門](https://ics.media/entry/18966)」のサンプルコード集です。
+Sample code for the [original ICS MEDIA article](https://ics.media/entry/18966).
