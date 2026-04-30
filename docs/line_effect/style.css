@@ -26,16 +26,15 @@ html {
 body {
   min-block-size: 100dvb;
   margin: 0;
-  overflow: hidden;
+  overflow: clip;
   background: var(--color-background);
 }
 
 .line-container {
   position: fixed;
-  inset-block-start: 50%;
-  inset-inline-start: 50%;
+  inset: 50% auto auto 50%;
   inline-size: var(--line-size);
-  block-size: var(--line-size);
+  aspect-ratio: 1;
   translate: -50% -50%;
   background-image:
     repeating-conic-gradient(
@@ -68,41 +67,15 @@ body {
       var(--color-accent) 10deg,
       var(--color-accent) 13deg
     );
-  animation: line-spin var(--line-duration) linear infinite;
-}
-
-.line-container::before {
-  position: absolute;
-  inset: 0;
-  content: "";
-  background-image: radial-gradient(
-    var(--color-background) 0%,
-    var(--color-background) 12%,
-    transparent 30%,
-    transparent
+  -webkit-mask-image: radial-gradient(
+    transparent 0 12%,
+    white 30%
   );
-}
-
-@supports (mask-image: radial-gradient(white, white)) or
-  (-webkit-mask-image: radial-gradient(white, white)) {
-  .line-container {
-    -webkit-mask-image: radial-gradient(
-      transparent 0%,
-      transparent 12%,
-      white 30%,
-      white
-    );
-    mask-image: radial-gradient(
-      transparent 0%,
-      transparent 12%,
-      white 30%,
-      white
-    );
-  }
-
-  .line-container::before {
-    display: none;
-  }
+  mask-image: radial-gradient(
+    transparent 0 12%,
+    white 30%
+  );
+  animation: line-spin var(--line-duration) linear infinite;
 }
 
 .stars {
@@ -112,76 +85,25 @@ body {
 }
 
 .star {
-  --star-size: 8px;
-  --star-x: 0vw;
-  --star-y: 0vw;
-  --star-rotation: 0deg;
-  --star-delay: 0ms;
+  --star-index: sibling-index();
+  --star-angle: calc(var(--star-index) * 137.508deg);
+  --star-radius: calc(6vmin + (sin(var(--star-index) * 61deg) + 1) * 18vmin);
+  --star-size: calc(4px + (sin(var(--star-index) * 37deg) + 1) * 7px);
 
   position: absolute;
-  inset-block-start: 50%;
-  inset-inline-start: 50%;
+  inset: 50% auto auto 50%;
   inline-size: var(--star-size);
-  block-size: var(--star-size);
-  translate: calc(-50% + var(--star-x)) calc(-50% + var(--star-y));
-  rotate: var(--star-rotation);
+  aspect-ratio: 1;
+  translate:
+    calc(-50% + cos(var(--star-angle)) * var(--star-radius))
+    calc(-50% + sin(var(--star-angle)) * var(--star-radius));
+  rotate: calc(var(--star-index) * 83deg);
   opacity: 0;
   background: var(--color-star);
   clip-path: var(--star-shape);
   animation: star-flash var(--star-duration) ease-in infinite;
-  animation-delay: var(--star-delay);
+  animation-delay: calc((sin(var(--star-index) * 97deg) + 1) * -2s);
 }
-
-  .star:nth-child(1) { --star-size: 10px; --star-x: -2vw; --star-y: -28vw; --star-rotation: 7deg; --star-delay: 107ms; }
-  .star:nth-child(2) { --star-size: 6px; --star-x: 1vw; --star-y: 39vw; --star-rotation: 182deg; --star-delay: 2212ms; }
-  .star:nth-child(3) { --star-size: 1px; --star-x: 40vw; --star-y: 12vw; --star-rotation: 215deg; --star-delay: 485ms; }
-  .star:nth-child(4) { --star-size: 5px; --star-x: 2vw; --star-y: 12vw; --star-rotation: 26deg; --star-delay: 2522ms; }
-  .star:nth-child(5) { --star-size: 10px; --star-x: -21vw; --star-y: 19vw; --star-rotation: 259deg; --star-delay: 2363ms; }
-  .star:nth-child(6) { --star-size: 3px; --star-x: -35vw; --star-y: -28vw; --star-rotation: 231deg; --star-delay: 1399ms; }
-  .star:nth-child(7) { --star-size: 13px; --star-x: 20vw; --star-y: 7vw; --star-rotation: 79deg; --star-delay: 520ms; }
-  .star:nth-child(8) { --star-size: 11px; --star-x: -2vw; --star-y: -2vw; --star-rotation: 337deg; --star-delay: 3545ms; }
-  .star:nth-child(9) { --star-size: 18px; --star-x: 24vw; --star-y: 11vw; --star-rotation: 76deg; --star-delay: 1363ms; }
-  .star:nth-child(10) { --star-size: 2px; --star-x: -14vw; --star-y: -20vw; --star-rotation: 204deg; --star-delay: 2372ms; }
-  .star:nth-child(11) { --star-size: 14px; --star-x: 11vw; --star-y: 26vw; --star-rotation: 211deg; --star-delay: 199ms; }
-  .star:nth-child(12) { --star-size: 12px; --star-x: 9vw; --star-y: -30vw; --star-rotation: 310deg; --star-delay: 1089ms; }
-  .star:nth-child(13) { --star-size: 13px; --star-x: -24vw; --star-y: 26vw; --star-rotation: 76deg; --star-delay: 2468ms; }
-  .star:nth-child(14) { --star-size: 11px; --star-x: -10vw; --star-y: 7vw; --star-rotation: 279deg; --star-delay: 1592ms; }
-  .star:nth-child(15) { --star-size: 5px; --star-x: 6vw; --star-y: -7vw; --star-rotation: 197deg; --star-delay: 3533ms; }
-  .star:nth-child(16) { --star-size: 14px; --star-x: -15vw; --star-y: -7vw; --star-rotation: 152deg; --star-delay: 257ms; }
-  .star:nth-child(17) { --star-size: 17px; --star-x: -38vw; --star-y: 31vw; --star-rotation: 213deg; --star-delay: 2406ms; }
-  .star:nth-child(18) { --star-size: 5px; --star-x: -22vw; --star-y: -17vw; --star-rotation: 231deg; --star-delay: 3938ms; }
-  .star:nth-child(19) { --star-size: 1px; --star-x: 17vw; --star-y: 19vw; --star-rotation: 173deg; --star-delay: 1426ms; }
-  .star:nth-child(20) { --star-size: 17px; --star-x: 29vw; --star-y: 2vw; --star-rotation: 253deg; --star-delay: 2701ms; }
-  .star:nth-child(21) { --star-size: 14px; --star-x: 5vw; --star-y: 4vw; --star-rotation: 243deg; --star-delay: 862ms; }
-  .star:nth-child(22) { --star-size: 12px; --star-x: 6vw; --star-y: -21vw; --star-rotation: 93deg; --star-delay: 2921ms; }
-  .star:nth-child(23) { --star-size: 12px; --star-x: 5vw; --star-y: 21vw; --star-rotation: 8deg; --star-delay: 3059ms; }
-  .star:nth-child(24) { --star-size: 2px; --star-x: -1vw; --star-y: 3vw; --star-rotation: 265deg; --star-delay: 3355ms; }
-  .star:nth-child(25) { --star-size: 16px; --star-x: 24vw; --star-y: 13vw; --star-rotation: 333deg; --star-delay: 1070ms; }
-  .star:nth-child(26) { --star-size: 6px; --star-x: -4vw; --star-y: 11vw; --star-rotation: 282deg; --star-delay: 1336ms; }
-  .star:nth-child(27) { --star-size: 1px; --star-x: 9vw; --star-y: 7vw; --star-rotation: 69deg; --star-delay: 126ms; }
-  .star:nth-child(28) { --star-size: 3px; --star-x: 37vw; --star-y: -31vw; --star-rotation: 47deg; --star-delay: 1394ms; }
-  .star:nth-child(29) { --star-size: 2px; --star-x: -34vw; --star-y: 14vw; --star-rotation: 292deg; --star-delay: 1893ms; }
-  .star:nth-child(30) { --star-size: 11px; --star-x: 16vw; --star-y: 5vw; --star-rotation: 31deg; --star-delay: 478ms; }
-  .star:nth-child(31) { --star-size: 17px; --star-x: -37vw; --star-y: 13vw; --star-rotation: 272deg; --star-delay: 2205ms; }
-  .star:nth-child(32) { --star-size: 3px; --star-x: -18vw; --star-y: -10vw; --star-rotation: 227deg; --star-delay: 1577ms; }
-  .star:nth-child(33) { --star-size: 4px; --star-x: -7vw; --star-y: -38vw; --star-rotation: 188deg; --star-delay: 1841ms; }
-  .star:nth-child(34) { --star-size: 7px; --star-x: 25vw; --star-y: -4vw; --star-rotation: 317deg; --star-delay: 2149ms; }
-  .star:nth-child(35) { --star-size: 10px; --star-x: -18vw; --star-y: 30vw; --star-rotation: 329deg; --star-delay: 3011ms; }
-  .star:nth-child(36) { --star-size: 17px; --star-x: 0vw; --star-y: -35vw; --star-rotation: 335deg; --star-delay: 1037ms; }
-  .star:nth-child(37) { --star-size: 10px; --star-x: 5vw; --star-y: -10vw; --star-rotation: 295deg; --star-delay: 3181ms; }
-  .star:nth-child(38) { --star-size: 12px; --star-x: -7vw; --star-y: -28vw; --star-rotation: 159deg; --star-delay: 3456ms; }
-  .star:nth-child(39) { --star-size: 17px; --star-x: -9vw; --star-y: -3vw; --star-rotation: 228deg; --star-delay: 2977ms; }
-  .star:nth-child(40) { --star-size: 12px; --star-x: -2vw; --star-y: -37vw; --star-rotation: 164deg; --star-delay: 564ms; }
-  .star:nth-child(41) { --star-size: 18px; --star-x: 15vw; --star-y: -15vw; --star-rotation: 339deg; --star-delay: 573ms; }
-  .star:nth-child(42) { --star-size: 8px; --star-x: 23vw; --star-y: -10vw; --star-rotation: 339deg; --star-delay: 3614ms; }
-  .star:nth-child(43) { --star-size: 17px; --star-x: 18vw; --star-y: 20vw; --star-rotation: 58deg; --star-delay: 2404ms; }
-  .star:nth-child(44) { --star-size: 9px; --star-x: -12vw; --star-y: -18vw; --star-rotation: 47deg; --star-delay: 440ms; }
-  .star:nth-child(45) { --star-size: 4px; --star-x: -5vw; --star-y: -25vw; --star-rotation: 108deg; --star-delay: 2324ms; }
-  .star:nth-child(46) { --star-size: 17px; --star-x: 23vw; --star-y: -14vw; --star-rotation: 72deg; --star-delay: 1064ms; }
-  .star:nth-child(47) { --star-size: 13px; --star-x: 3vw; --star-y: 30vw; --star-rotation: 203deg; --star-delay: 2400ms; }
-  .star:nth-child(48) { --star-size: 17px; --star-x: 9vw; --star-y: -26vw; --star-rotation: 291deg; --star-delay: 879ms; }
-  .star:nth-child(49) { --star-size: 11px; --star-x: 3vw; --star-y: 31vw; --star-rotation: 183deg; --star-delay: 2414ms; }
-  .star:nth-child(50) { --star-size: 7px; --star-x: -12vw; --star-y: 40vw; --star-rotation: 231deg; --star-delay: 2205ms; }
 
 .item {
   position: fixed;
@@ -193,7 +115,10 @@ body {
   block-size: 200px;
   translate: -50% -50%;
   color: var(--color-accent);
-  font-size: 100px;
+  font-size: 64px;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1;
   pointer-events: none;
 }
 

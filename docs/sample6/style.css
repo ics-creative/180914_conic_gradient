@@ -1,10 +1,8 @@
 :root {
   --background-color: #ffee33;
   --circle-width: 100vw;
-}
 
-@media (orientation: portrait) {
-  :root {
+  @media (orientation: portrait) {
     --circle-width: 100vh;
   }
 }
